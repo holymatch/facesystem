@@ -1,0 +1,27 @@
+version: '3'
+services:
+  faceweb:
+    image: hk.hku.cs/faceweb:v1.0.1
+    build: ./faceweb/source/faceweb/build/docker 
+    ports:
+     - "8080:8080"
+    networks:
+        apps_network:
+          ipv4_address: ${IPV4_NETWORK:-172.22.1}.10
+          aliases:
+            - faceweb
+  faceengine:
+    image: hk.hku.cs/faceengine:v1.0.1
+    build: ./faceengine
+    networks:
+        apps_network:
+          ipv4_address: ${IPV4_NETWORK:-172.22.1}.11
+          aliases:
+            - faceengine
+networks:
+  apps_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${IPV4_NETWORK:-172.22.1}.0/24
