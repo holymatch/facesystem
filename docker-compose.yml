@@ -1,20 +1,20 @@
 version: '3'
 services:
   faceweb:
-    image: hk.hku.cs/faceweb:v1.0.1
-    build: ./faceweb/source/faceweb/build/docker 
+    image: holymatch/faceweb:latest
+    #build: ./faceweb/source/faceweb/build/docker 
     ports:
       - "8080:8080"
     volumes:
-      - data-volume:/Data/Database/faceDB
+      - data-volume:/Data/Database
     networks:
         apps_network:
           ipv4_address: ${IPV4_NETWORK:-172.22.1}.10
           aliases:
             - faceweb
   faceengine:
-    image: hk.hku.cs/faceengine:v1.0.1
-    build: ./faceengine
+    image: holymatch/faceengine:latest
+    #build: ./faceengine
     volumes:
       - data-volume:/Data/KnowFace
     networks:
