@@ -4,7 +4,9 @@ services:
     image: hk.hku.cs/faceweb:v1.0.1
     build: ./faceweb/source/faceweb/build/docker 
     ports:
-     - "8080:8080"
+      - "8080:8080"
+    volumes:
+      - data-volume:/Data/Database/faceDB
     networks:
         apps_network:
           ipv4_address: ${IPV4_NETWORK:-172.22.1}.10
@@ -13,6 +15,8 @@ services:
   faceengine:
     image: hk.hku.cs/faceengine:v1.0.1
     build: ./faceengine
+    volumes:
+      - data-volume:/Data/KnowFace
     networks:
         apps_network:
           ipv4_address: ${IPV4_NETWORK:-172.22.1}.11
@@ -25,3 +29,5 @@ networks:
       driver: default
       config:
         - subnet: ${IPV4_NETWORK:-172.22.1}.0/24
+volumes:
+  data-volume:
