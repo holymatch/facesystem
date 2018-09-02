@@ -35,3 +35,6 @@ To stop the server run the following command in the root directory of facesystem
 ```sh
 docker-compose down
 ```
+
+### Access the server
+The docker will map the port 8080 to the system, use `http://{serverip}:8080/faceweb` to access the server, the Face Information Server also implement Swagger 2, use `http://{serverip}:8080/swagger-ui.html` to access swagger page.
