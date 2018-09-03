@@ -8,7 +8,7 @@
 
 
 ### Introduction
-This file docker compose is used for setup Face Information Server as well as Face Engine as once.
+This docker compose file is used for setup Face Information Server as well as Face Engine in same server at same time.
 The Face Recognition System request the following component:
 + [Docker](https://docs.docker.com/)
 + [Docker Compose](https://docs.docker.com/compose/)
